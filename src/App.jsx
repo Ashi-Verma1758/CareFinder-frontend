@@ -1,15 +1,40 @@
 import { useState } from 'react'
 import './App.css'
+
+import Nav from './Nav
 import Login from './Login'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/test`)
+      .then(res => {
+        console.log("Response from backend:");
+      })
+      .catch(err => {
+        console.error("Error connecting to backend:");
+      });
+  }, []);
 
   return (
-    <>
-      <h1>CareFinder</h1>
-    </>
-  )
+  
+
+    <BrowserRouter>
+      <Nav onSearch={setSearchTerm} />
+
+      <div className="main-content">
+        <Routes>
+          <Route path="/" element={<FindNearby />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
+
+
