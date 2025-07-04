@@ -2,7 +2,10 @@ import { useState,useEffect} from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import FindNearby from './FindNearby';
 import './App.css'
-import Nav from './Nav';
+
+import Nav from './Nav'
+import Login from './Login'
+
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
 
