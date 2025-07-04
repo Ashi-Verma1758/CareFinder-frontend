@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useState,useEffect} from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import FindNearby from './FindNearby';
 import './App.css'
 import Nav from './Nav';
 function App() {
