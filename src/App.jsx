@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import './App.css'
-import Nav from './Nav';
+
+import Nav from './Nav
+import Login from './Login'
+
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
 
