@@ -1,0 +1,50 @@
+.profile-card {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 260px;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+.profile-card h3 {
+  margin-top: 0;
+  color: #035a6d;
+}
+
+.profile-card p {
+  font-size: 0.95rem;
+  margin: 6px 0;
+}
+
+.logout-btn {
+  margin-top: 1rem;
+  padding: 0.6rem;
+  width: 100%;
+  background-color: #f05454;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #d43b3b;
+}
+
+.close-btn {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  font-size: 1.2rem;
+  background: none;
+  border: none;
+  color: #777;
+  cursor: pointer;
+}

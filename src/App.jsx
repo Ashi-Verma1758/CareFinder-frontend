@@ -1,10 +1,20 @@
-import { useState,useEffect} from 'react'
+import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import axios from 'axios';
+import './App.css';
+
+import AdminDashboard from './Admin/AdminDashboard';
+
+import Nav from './Nav';
 import FindNearby from './FindNearby';
-import './App.css'
 import HealthTips from './HealthTips';
-import Nav from './Nav'
-import Login from './Login'
+import HospitalDetailsWrapper from './HospitalDetailsWrapper'; // optional wrapper
+import Login from './Login';
+import Signup from './Signup';
+import Profile from './Profile';
+import HospitalList from './Patient/HospitalList';
+import HospitalDetail from './Patient/HospitalDetail';
+import HospitalStaffDashboard from './HospitalStaffDashboard';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -20,8 +30,6 @@ function App() {
   }, []);
 
   return (
-  
-
     <BrowserRouter>
       <Nav onSearch={setSearchTerm} />
 
@@ -31,7 +39,17 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/profile" element={<Profile />} />
-            <Route path="/tips" element={<HealthTips />} />
+          <Route path="/tips" element={<HealthTips />} />
+
+          {/* ✅ Display list of approved hospitals */}
+          <Route path="/hospitals" element={<HospitalList />} />
+
+          {/* ✅ Show single hospital details */}
+          <Route path="/hospitals/:id" element={<HospitalDetail />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/staff-dashboard" element={<HospitalStaffDashboard />} />
+
+
         </Routes>
       </div>
     </BrowserRouter>
@@ -39,5 +57,3 @@ function App() {
 }
 
 export default App;
-
-
