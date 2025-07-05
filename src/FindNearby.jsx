@@ -5,6 +5,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import './FindNearby.css';
 import L from 'leaflet';
+import HealthTips from './HealthTips';
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -85,7 +86,7 @@ console.log("Formatted hospitals:", formatted);
         ))}
       </MapContainer>
 </div>
-
+<HealthTips/>
 </div>
     </div>
   );

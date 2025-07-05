@@ -2,7 +2,7 @@ import { useState,useEffect} from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import FindNearby from './FindNearby';
 import './App.css'
-
+import HealthTips from './HealthTips';
 import Nav from './Nav'
 import Login from './Login'
 
@@ -31,6 +31,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/profile" element={<Profile />} />
+            <Route path="/tips" element={<HealthTips />} />
         </Routes>
       </div>
     </BrowserRouter>
