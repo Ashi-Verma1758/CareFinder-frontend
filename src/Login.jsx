@@ -35,20 +35,25 @@ const token = res.data.data.accessToken;
     window.location.href = "/"; // or "/profile" if you want to land there
       // Optionally save accessToken to state/localStorage
     } catch (err) {
-      console.error("❌ Login failed:", err.response?.data || err.message);
-    }
+  const errorMsg = err?.response?.data?.message || err.message || "Unknown error";
+  console.error("Login failed:", errorMsg);
+  alert(`Login failed: ${errorMsg}`);
+}
+  
   };
   return (
+    <div className="login-wrapper">
     <div className="login-container">
       <h2>Login to CareFinder</h2>
       <form className="login-form" onSubmit={handleSubmit}>
-        <input type="username" name="Username" placeholder="username" value={formData.emailOrUsername}
+        <input type="username" name="Username" placeholder="Username" value={formData.emailOrUsername}
           onChange={handleChange} required />
         <input type="password" name="password" placeholder="Password" value={formData.password}
           onChange={handleChange} required />
         <button type="submit">Login</button>
         <p>Don't have an account? <a href="/signup">Sign up</a></p>
       </form>
+    </div>
     </div>
   );
 }

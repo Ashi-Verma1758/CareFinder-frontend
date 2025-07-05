@@ -30,13 +30,13 @@ function Signup() {
 
       const { accessToken, user } = res.data.data;
 
-      // store token and user info
+      // ✅ Store token and user info
       localStorage.setItem('token', accessToken);
       localStorage.setItem('user', JSON.stringify(user));
 
       alert('Registration successful!');
 
-      //Redirect to homepage or dashboard
+      // ✅ Redirect to homepage or dashboard
       navigate('/');
     } catch (err) {
       console.error('Registration failed:', err.response?.data || err.message);

@@ -22,10 +22,10 @@ function App() {
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/test`)
       .then(res => {
-        console.log("Response from backend:");
+        console.log("✅ Connected to backend");
       })
       .catch(err => {
-        console.error("Error connecting to backend:");
+        console.error("❌ Failed to connect to backend:", err.message);
       });
   }, []);
 

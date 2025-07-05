@@ -41,7 +41,7 @@ function HospitalCard({ hospital }) {
         📞 {hospital.contact}
       </div>
       <div className="view-more-container">
-        <Link to={`/hospitals/${hospital._id}`} className="view-more-button">
+        <Link to={`/hospitals/${hospital.id}`} className="view-more-button">
           View More
         </Link>
       </div>
