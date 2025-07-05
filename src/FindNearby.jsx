@@ -6,6 +6,7 @@ import 'leaflet/dist/leaflet.css';
 import './FindNearby.css';
 import L from 'leaflet';
 import HealthTips from './HealthTips';
+import HospitalCard from './HospitalCard';
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -88,6 +89,17 @@ console.log("Formatted hospitals:", formatted);
 </div>
 <HealthTips/>
 </div>
+    {hospitals.length === 0 && (
+  <p style={{ textAlign: 'center', marginTop: '1rem' }}>
+    No hospital data found. Please check backend or database.
+  </p>
+)}
+
+      <div className="hospital-cards">
+        {hospitals.map((hospital, index) => (
+          <HospitalCard key={index} hospital={hospital} />
+        ))}
+      </div>
     </div>
   );
 }
