@@ -1,0 +1,32 @@
+.admin-dashboard {
+  padding: 2rem;
+  font-family: sans-serif;
+}
+
+.hospital-list {
+  list-style: none;
+  padding: 0;
+}
+
+.hospital-card {
+  background-color: #f5f5f5;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.hospital-card h4 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.hospital-card button {
+  margin-top: 0.5rem;
+  padding: 5px 10px;
+  background: green;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
