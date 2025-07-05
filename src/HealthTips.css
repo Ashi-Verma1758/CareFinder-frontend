@@ -1,0 +1,52 @@
+.health-tips-section {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(124, 166, 211, 0.683);
+ 
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  flex-shrink: 0;
+  /* margin-left: 6vw; */
+  margin-right: 3vw;
+  /* margin-bottom: 2rem; */
+  /* margin-top: 1vw; */
+}
+
+.tips-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0d6efd;
+  margin-bottom: 1rem;
+}
+
+.tip-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 1rem;
+  background-color: #f8f9fa;
+  padding: 0.75rem;
+  border-radius: 8px;
+}
+
+.tip-card img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  margin-top: 2px;
+}
+
+.tip-text strong {
+  display: block;
+  color: #212529;
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.tip-text p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #555;
+}

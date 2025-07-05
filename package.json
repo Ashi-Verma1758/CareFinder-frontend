@@ -10,9 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
+    "leaflet": "^1.9.4",
+=======
     "axios": "^1.10.0",
+>>>>>>> cbaa9283ac958f8e870c4048ec07a2e5dcc5f240
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-leaflet": "^5.0.0",
     "react-router-dom": "^7.6.3"
   },
   "devDependencies": {
