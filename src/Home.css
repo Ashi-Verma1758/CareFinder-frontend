@@ -1,0 +1,30 @@
+.home-container {
+  text-align: center;
+  padding: 3rem;
+  font-family: Arial, sans-serif;
+}
+
+.home-container h1 {
+  font-size: 2.5rem;
+  color: #2a7ae2;
+  margin-bottom: 1rem;
+}
+
+.home-container p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.home-link {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #2a7ae2;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.home-link:hover {
+  background-color: #1a5eb8;
+}
