@@ -1,51 +1,47 @@
+/* Base styles */
 #root {
- 
-  margin: 0 ;
-  padding: 1rem 2rem;
-  background-color: #f9fbfd;
-  font-family: 'Segoe UI', sans-serif;
+  padding: 4rem 3rem 2rem 3rem; /* ⬅️ increased top padding */
   width: 100%;
-  
+  background-color: #f0f6fc;
+  font-family: 'Segoe UI', sans-serif;
+  box-sizing: border-box;
 }
-body {
-    margin: 0;
-    display: flex;
-    place-items: center;
-    min-width: 320px;
-    min-height: 100vh;
-    background-color: #f9fbfd;
-    /* margin-left: 10vw;
-     */
-     
+
+#root {
+  padding: 2rem 3rem;
+  width: 100%;
+  box-sizing: border-box;
 }
+
+/* Main layout */
 .main-content {
   display: flex;
-  justify-content:space-evenly;
-  padding:2rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-top: 4rem;
   margin-top: 30vh;
-  margin-left: -30vw;
-  
-  /* gap: 8rem; */
-
-  /* flex-direction: row; */
-
-
 }
 
+/* Hospital Cards Grid */
+.hospital-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding-top: 2rem;
+}
 
+/* Logo Styling */
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+  height: 5em;
+  padding: 1em;
+  transition: filter 300ms ease;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 1rem #007bff80);
 }
 
+/* Animations */
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -54,39 +50,43 @@ body {
     transform: rotate(360deg);
   }
 }
- .hospital-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Force 3 cards per row */
-  gap: 1rem;
-  margin-top: 5vh;
-  padding: 0 2rem;
-}
 
 @media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
+  .logo.react:hover {
     animation: logo-spin infinite 20s linear;
   }
 }
 
+/* Cards */
 .card {
   padding: 2em;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  background-color: white;
 }
 
+/* Read the Docs */
 .read-the-docs {
-  color: #888;
+  color: #7f8c8d;
+  font-style: italic;
+  margin-top: 2rem;
 }
 
-/* @media (min-width: 768px) {
-  .main-content{
-    height: 200%
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+    padding: 1rem;
+  }
+
+  .hospital-cards {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+  }
+
+  #root {
+    padding: 1rem;
   }
 }
-
- */
-
- @media (max-width: 768px){
-    .main-content{
-      margin-left: -4.5rem;
-    }
-    
-} 
