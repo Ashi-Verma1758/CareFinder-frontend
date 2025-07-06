@@ -53,7 +53,7 @@ function Signup() {
         <input type="text" name="fullName" placeholder="Full Name" onChange={handleChange} required />
         <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
         <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
-        <input type="text" name="role" placeholder="Role (e.g. student)" onChange={handleChange} required />
+        <input type="text" name="role" placeholder="Role (admin, Hospital-staff, viewer)" onChange={handleChange} required />
 
         <button type="submit">Sign Up</button>
         <p>Already have an account? <a href="/login">Log in</a></p>
