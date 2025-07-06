@@ -26,10 +26,14 @@
 /* Hospital Cards Grid */
 .hospital-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  padding-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  max-width: 100%; /* ensure full width usage */
+  box-sizing: border-box;
 }
+
 
 /* Logo Styling */
 .logo {
