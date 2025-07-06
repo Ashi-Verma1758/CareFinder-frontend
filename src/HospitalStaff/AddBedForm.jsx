@@ -30,7 +30,7 @@ function AddBedForm({ hospitalId, onAddSuccess }) {
         availableBeds: Number(bedData.availableBeds)
       };
 
-      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/beds/${hospitalId}`, payload, {
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/beds`, payload, {
         headers: { Authorization: `Bearer ${token}` }
       });
 
