@@ -1,15 +1,25 @@
 // src/HospitalStaff/UpdateBedForm.jsx
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-// import './UpdateBedForm.css';
 import './HospitalStaffForm.css';
-
+import { useNavigate } from 'react-router-dom';
 
 function UpdateBedForm({ bed, onUpdateSuccess }) {
   const [formData, setFormData] = useState({
-    totalBeds: bed.totalBeds,
-    availableBeds: bed.availableBeds,
+    totalBeds: '',
+    availableBeds: '',
   });
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (bed) {
+      setFormData({
+        totalBeds: bed.totalBeds,
+        availableBeds: bed.availableBeds,
+      });
+    }
+  }, [bed]);
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -20,21 +30,32 @@ function UpdateBedForm({ bed, onUpdateSuccess }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!bed?._id) {
+      alert("❌ Invalid bed ID. Cannot update.");
+      return;
+    }
+
     try {
       const token = localStorage.getItem('token');
       await axios.put(`http://localhost:8000/api/beds/${bed._id}`, formData, {
         headers: { Authorization: `Bearer ${token}` }
       });
-      alert('Bed updated successfully!');
+
+      alert('✅ Bed updated successfully!');
       onUpdateSuccess?.();
+      navigate('/');
     } catch (err) {
-      console.error('Failed to update bed:', err);
+      console.error('❌ Failed to update bed:', err);
       alert('Update failed');
     }
   };
 
+  if (!bed) return <div>Loading bed data...</div>;
+
   return (
     <form className="update-bed-form" onSubmit={handleSubmit}>
+      <h3>Update Bed</h3>
       <input
         type="number"
         name="totalBeds"

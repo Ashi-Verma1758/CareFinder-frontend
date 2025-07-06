@@ -14,18 +14,19 @@ function Nav({ onSearch }) {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const user = JSON.parse(localStorage.getItem("user"));
+
   useEffect(() => {
-    const user = localStorage.getItem('user');
     if (user) {
       setIsLoggedIn(true);
-      setUsername(JSON.parse(user)?.username || '');
+      setUsername(user?.username || '');
     } else {
       setIsLoggedIn(false);
       setUsername('');
     }
   }, [location.pathname]);
 
-  // 🔁 Auto-close Profile on outside click or Esc
+  // Close profile dropdown on outside click or Esc
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (profileRef.current && !profileRef.current.contains(e.target)) {
@@ -56,7 +57,7 @@ function Nav({ onSearch }) {
     }
 
     try {
-      const res = await fetch(`http://localhost:8000/api/search?query=${searchText}`) ;
+      const res = await fetch(`http://localhost:8000/api/search?query=${searchText}`);
       const data = await res.json();
       setResults(data?.data || []);
       console.log("Search text:", searchText);
@@ -95,6 +96,7 @@ function Nav({ onSearch }) {
       </div>
 
       <div className="navbar-right">
+        {/* 🔍 Search Bar */}
         <div className="search-wrapper">
           <input
             type="text"
@@ -107,6 +109,7 @@ function Nav({ onSearch }) {
           <button className="search-button" onClick={handleSearch}>Search</button>
         </div>
 
+        {/* 📄 Search Results Dropdown */}
         {results.length > 0 && (
           <div className="search-dropdown">
             {results.map((item, index) => (
@@ -121,6 +124,7 @@ function Nav({ onSearch }) {
           </div>
         )}
 
+        {/* 👥 Auth Controls */}
         {!isLoggedIn ? (
           <>
             <Link to="/login">
@@ -132,14 +136,30 @@ function Nav({ onSearch }) {
           </>
         ) : (
           <>
+            {/* 🔧 Staff/Admin Tools */}
+            {(user?.role === 'staff' || user?.role === 'admin') && (
+              <>
+                <Link to="/add-hospital">
+                  <button className="search-button">Add Hospital</button>
+                </Link>
+                <Link to="/add-bed">
+                  <button className="search-button">Add Bed</button>
+                </Link>
+                <Link to="/update-bed">
+                  <button className="search-button">Update Bed</button>
+                </Link>
+              </>
+            )}
+
+            {/* 👤 Profile Dropdown */}
             <div className="profile-wrapper" ref={profileRef}>
               <div className="profile-container" onClick={() => setShowProfile(prev => !prev)}>
-                <img src="/profile.png" className="profile-icon" />
+                <img src="/profile.png" className="profile-icon" alt="profile" />
               </div>
 
               {showProfile && (
                 <Profile
-                  user={JSON.parse(localStorage.getItem("user"))}
+                  user={user}
                   onClose={() => setShowProfile(false)}
                   onLogout={handleLogout}
                 />

@@ -1,9 +1,7 @@
-// src/HospitalStaff/AddHospitalForm.jsx
 import { useState } from 'react';
 import axios from 'axios';
-// import './AddHospitalForm.css';
+import { useNavigate } from 'react-router-dom';
 import './HospitalStaffForm.css';
-
 
 function AddHospitalForm({ onAddSuccess }) {
   const [formData, setFormData] = useState({
@@ -16,6 +14,8 @@ function AddHospitalForm({ onAddSuccess }) {
     email: '',
   });
 
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
@@ -27,15 +27,25 @@ function AddHospitalForm({ onAddSuccess }) {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:8000/api/hospitals', formData, {
+      const res = await axios.post('http://localhost:8000/api', formData, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       });
-      alert('Hospital added successfully!');
-      onAddSuccess?.();
+
+      const newHospital = res.data?.data;
+
+      if (newHospital && newHospital._id) {
+        localStorage.setItem("newHospitalId", newHospital._id); // 🟢 used for highlighting later
+      }
+
+      alert('✅ Hospital added successfully!');
+      onAddSuccess?.(); // Call callback if provided
+
+      // 🔁 Redirect to homepage
+      navigate('/');
     } catch (err) {
-      console.error('Failed to add hospital:', err);
+      console.error('❌ Failed to add hospital:', err);
       alert('Error adding hospital');
     }
   };

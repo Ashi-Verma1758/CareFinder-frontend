@@ -1,60 +1,79 @@
-import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import axios from "axios";
-import "./HospitalDetail.css";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import './HospitalDetail.css';
 
 function HospitalDetail() {
   const { id } = useParams();
   const [hospital, setHospital] = useState(null);
   const [beds, setBeds] = useState([]);
-  const [error, setError] = useState("");
 
   useEffect(() => {
-    const fetchHospitalDetails = async () => {
-      try {
-        const hospitalRes = await axios.get(`http://localhost:8000/api/hospitals/${id}`);
-        setHospital(hospitalRes.data.data);
+   const fetchHospitalDetails = async () => {
+  try {
+    const res = await axios.get(`http://localhost:8000/api/${id}`);
+    console.log("✅ Hospital response:", res.data);
 
-        const bedsRes = await axios.get(`http://localhost:8000/api/beds/${id}`);
-        setBeds(bedsRes.data.data);
-      } catch (err) {
-        console.error("Error fetching hospital details:", err);
-        setError("Failed to load hospital data. Please try again later.");
+    setHospital(res.data.hospitals); // ✅ FIXED
+  } catch (error) {
+    console.error("❌ Error fetching hospital:", error);
+    setHospital(null);
+  }
+};
+
+
+    const fetchBeds = async () => {
+      try {
+        const res = await axios.get(`http://localhost:8000/api/beds/${id}`);
+        console.log("✅ Beds response:", res.data);
+        const bedArray = Array.isArray(res.data) ? res.data : res.data.beds || [];
+        setBeds(bedArray);
+      } catch (error) {
+        console.error("❌ Error fetching beds:", error);
+        setBeds([]);
       }
     };
 
     fetchHospitalDetails();
+    fetchBeds();
   }, [id]);
-
-  if (error) return <p className="error-message">{error}</p>;
-  if (!hospital) return <p>Loading hospital info...</p>;
 
   return (
     <div className="hospital-detail-container">
-      <div className="hospital-info">
-        <h2>{hospital.name}</h2>
-        <p>{hospital.address}, {hospital.city}, {hospital.state}</p>
-        <p>Email: {hospital.email}</p>
-        <p>Phone: {hospital.phone}</p>
-      </div>
+      {!hospital || !hospital.name ? (
+  <p>Loading hospital details...</p>
+) : (
+  <>
+    <h2>{hospital.name}</h2>
+    <p><strong>Location:</strong> {hospital.city}</p>
+    <p><strong>Status:</strong> {hospital.isApproved ? 'Approved' : 'Pending'}</p>
+  </>
+)}
 
-      <h3>Bed Availability</h3>
-      <ul className="bed-list">
-        {beds.length === 0 ? (
-          <p>No beds listed for this hospital.</p>
-        ) : (
-          beds.map((bed) => (
-            <li key={bed._id} className="bed-item">
-              <strong>{bed.type}</strong><br />
-              Total: {bed.totalBeds}, Available: {bed.availableBeds}
-            </li>
-          ))
-        )}
-      </ul>
 
-      <div className="back-link">
-        <Link to="/hospitals">← Back to Hospital List</Link>
-      </div>
+      <h3>Available Beds</h3>
+      {Array.isArray(beds) && beds.length > 0 ? (
+        <table className="beds-table">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Total</th>
+              <th>Available</th>
+            </tr>
+          </thead>
+          <tbody>
+            {beds.map((bed, index) => (
+              <tr key={bed._id || index}>
+                <td>{bed.type}</td>
+                <td>{bed.totalBeds}</td>
+                <td>{bed.availableBeds}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p>No beds available or error in data format.</p>
+      )}
     </div>
   );
 }

@@ -16,6 +16,10 @@ import HospitalList from './Patient/HospitalList';
 import HospitalDetail from './Patient/HospitalDetail';
 import HospitalStaffDashboard from './HospitalStaffDashboard';
 
+import AddHospitalForm from './HospitalStaff/AddHospitalForm';
+import UpdateBedForm from './HospitalStaff/UpdateBedForm';
+import AddBedForm from './HospitalStaff/AddBedForm';
+import UpdateBedPage from './HospitalStaff/UpdateBedPage';
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -42,12 +46,20 @@ function App() {
           <Route path="/tips" element={<HealthTips />} />
 
           {/* ✅ Display list of approved hospitals */}
-          <Route path="/hospitals" element={<HospitalList />} />
+          <Route path="/" element={<HospitalList />} />
 
           {/* ✅ Show single hospital details */}
           <Route path="/hospitals/:id" element={<HospitalDetail />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/staff-dashboard" element={<HospitalStaffDashboard />} />
+          {/* <Route path="/addhos" element={<AddHospitalForm />} /> */}
+          <Route path="/add-hospital" element={<AddHospitalForm />} />
+<Route path="/add-bed" element={<AddBedForm />} />
+<Route path="/update-bed" element={<UpdateBedForm />} />
+<Route path="/update-bed/:id" element={<UpdateBedPage />} />
+
+
+
 
 
         </Routes>
