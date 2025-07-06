@@ -26,10 +26,10 @@ function App() {
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/test`)
       .then(res => {
-        console.log("✅ Connected to backend");
+        console.log("Connected to backend");
       })
       .catch(err => {
-        console.error("❌ Failed to connect to backend:", err.message);
+        console.error("Failed to connect to backend:", err.message);
       });
   }, []);
 
@@ -45,10 +45,8 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/tips" element={<HealthTips />} />
 
-          {/* ✅ Display list of approved hospitals */}
           <Route path="/" element={<HospitalList />} />
 
-          {/* ✅ Show single hospital details */}
           <Route path="/hospitals/:id" element={<HospitalDetail />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/staff-dashboard" element={<HospitalStaffDashboard />} />
