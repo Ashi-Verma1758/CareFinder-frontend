@@ -20,7 +20,7 @@ function FindNearby() {
  useEffect(() => {
   const fetchHospitals = async () => {
     try {
-      const res = await fetch('http://localhost:8000/api/search');
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/search`);
       const data = await res.json();
 
       if (!Array.isArray(data?.data)) {

@@ -12,7 +12,7 @@ function UpdateBedPage() {
     const fetchBed = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get(`http://localhost:8000/api/beds/bed/${id}`, {
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/beds/bed/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setBed(res.data?.data);

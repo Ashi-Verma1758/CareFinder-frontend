@@ -7,7 +7,9 @@ function AdminDashboard() {
 
   const fetchPending = async () => {
     try {
-      const res = await axios.get('http://localhost:8000/api/hospitals?approved=false');
+      // const res = await axios.get('http://localhost:8000/api/hospitals?approved=false');
+      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/hospitals?approved=false`)
+      
       setPendingHospitals(res.data.data);
     } catch (error) {
       console.error('Failed to fetch pending hospitals:', error);
@@ -17,7 +19,7 @@ function AdminDashboard() {
   const approveHospital = async (id) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:8000/api/hospitals/approve/${id}`, {}, {
+      await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/hospitals/approve/${id}`, {}, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert('Hospital approved!');

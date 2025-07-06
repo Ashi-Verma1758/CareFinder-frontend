@@ -38,7 +38,7 @@ function UpdateBedForm({ bed, onUpdateSuccess }) {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:8000/api/beds/${bed._id}`, formData, {
+      await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/beds/${bed._id}`, formData, {
         headers: { Authorization: `Bearer ${token}` }
       });
 

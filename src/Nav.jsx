@@ -57,7 +57,7 @@ function Nav({ onSearch }) {
     }
 
     try {
-      const res = await fetch(`http://localhost:8000/api/search?query=${searchText}`);
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/search?query=${searchText}`);
       const data = await res.json();
       setResults(data?.data || []);
       console.log("Search text:", searchText);

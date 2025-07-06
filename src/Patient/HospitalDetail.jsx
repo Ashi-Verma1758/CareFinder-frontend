@@ -24,7 +24,7 @@ function HospitalDetail() {
 
     const fetchBeds = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/api/beds/${id}`);
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/beds/${id}`);
         console.log("✅ Beds response:", res.data);
         const bedArray = Array.isArray(res.data) ? res.data : res.data.beds || [];
         setBeds(bedArray);

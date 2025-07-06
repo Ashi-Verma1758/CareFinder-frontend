@@ -8,7 +8,7 @@ const [hospital, setHospital] = useState(null);
 const [error, setError] = useState(null);
 
 useEffect(() => {
-fetch(`http://localhost:8000/api/hospitals/${id}`)
+fetch(`${import.meta.env.VITE_BACKEND_URL}/api/hospitals/${id}`)
 .then(res => {
 if (!res.ok) {
 throw new Error('Failed to fetch hospital details');

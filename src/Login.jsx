@@ -18,7 +18,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res =await axios.post("http://localhost:8000/api/user/login", {
+      const res =await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/user/login`, {
         Username: formData.username,
         password: formData.password
       }, {

@@ -30,7 +30,7 @@ function HospitalStaffDashboard() {
 
   const fetchBeds = async (id) => {
     try {
-      const res = await axios.get(`http://localhost:8000/api/beds/${id}`);
+      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/beds/${id}`);
       setBeds(res.data.data);
     } catch (err) {
       console.error("Failed to fetch beds:", err);

@@ -11,7 +11,7 @@ function HospitalPage() {
     // Fetch hospital details
     const fetchHospital = async () => {
       try {
-        const res = await fetch(`http://localhost:8000/api/hospital/${id}`);
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/hospital/${id}`);
         const data = await res.json();
         setHospital(data?.data);
       } catch (error) {
@@ -22,7 +22,7 @@ function HospitalPage() {
     // Fetch bed data
     const fetchBeds = async () => {
       try {
-        const res = await fetch(`http://localhost:8000/api/bed/${id}`);
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/bed/${id}`);
         const data = await res.json();
         setBeds(data?.data || []);
       } catch (error) {
