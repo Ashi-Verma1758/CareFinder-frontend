@@ -11,7 +11,7 @@ function HospitalDetail() {
   useEffect(() => {
    const fetchHospitalDetails = async () => {
   try {
-    const res = await axios.get(`http://localhost:8000/api/${id}`);
+    const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/${id}`);
     console.log("✅ Hospital response:", res.data);
 
     setHospital(res.data.hospitals); // ✅ FIXED

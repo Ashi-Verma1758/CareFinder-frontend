@@ -27,7 +27,7 @@ function AddHospitalForm({ onAddSuccess }) {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.post('${import.meta.env.VITE_BACKEND_URL}/api', formData, {
+      const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api`, formData, {
         headers: {
           Authorization: `Bearer ${token}`
         }
