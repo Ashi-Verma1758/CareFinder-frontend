@@ -8,7 +8,7 @@ function Profile({ user, onClose, onLogout }) {
     <div className="profile-card">
       <button className="close-btn" onClick={onClose}>×</button>
       <h3>👤 Profile</h3>
-      <p><strong>Username:</strong> {user.username}</p>
+      {/* <p><strong>Username:</strong> {user.userName}</p> */}
       <p><strong>Full Name:</strong> {user.fullName}</p>
       <p><strong>Email:</strong> {user.email}</p>
       <p><strong>Role:</strong> {user.role}</p>

@@ -54,7 +54,7 @@ function UpdateBedForm({ bed, onUpdateSuccess }) {
   if (!bed) return <div>Loading bed data...</div>;
 
   return (
-    <form className="update-bed-form" onSubmit={handleSubmit}>
+    <form className="form-container" onSubmit={handleSubmit}>
       <h3>Update Bed</h3>
       <input
         type="number"

@@ -51,7 +51,7 @@ function AddHospitalForm({ onAddSuccess }) {
   };
 
   return (
-    <form className="hospital-form" onSubmit={handleSubmit}>
+    <form className="form-container" onSubmit={handleSubmit}>
       <h3>Add Hospital</h3>
       {Object.entries(formData).map(([key, value]) => (
         <input
